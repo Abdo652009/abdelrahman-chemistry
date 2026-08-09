@@ -1,608 +1,171 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>عبدالرحمن حماده | منصة الكيمياء</title>
-
+    <title>عبدالرحمن حماده | منصة الكيمياء التعليمية</title>
+    <!-- خطوط جوجل وتأثيرات الأيقونات -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="header">
-
-    <div class="container nav">
-
-        <a href="#" class="logo">
-
-            <div class="logo-icon">
-                ⚗️
-            </div>
-
-            <div>
-                عبدالرحمن
-                <span>حماده</span>
-            </div>
-
-        </a>
-
-        <nav class="nav-links">
-
-            <a href="#home">الرئيسية</a>
-            <a href="#courses">الكورسات</a>
-            <a href="#features">المميزات</a>
-            <a href="#about">عن المنصة</a>
-
-        </nav>
-
-        <button class="login-btn" onclick="openLogin()">
-            دخول الطالب
-        </button>
-
+    <!-- شاشة التحميل المبهرة -->
+    <div class="loader-container" id="loader">
+        <div class="flask">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        <h2 class="loader-text">جاري تحضير معمل الكيمياء...</h2>
     </div>
 
-</header>
+    <!-- بار التنقل العلوي -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fas fa-flask"></i> أ. عبدالرحمن حماده</a>
+            <ul class="nav-links">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#stats">المميزات</a></li>
+                <li><a href="#courses">الكورسات</a></li>
+                <li><a href="#about">عن المنصة</a></li>
+            </ul>
+            <button class="btn-login" onclick="openModal()"><i class="fas fa-user-graduate"></i> دخول البطل</button>
+        </div>
+    </nav>
 
-
-<main>
-
-<section id="home" class="hero">
-
-    <div class="container hero-content">
-
-        <div class="hero-text">
-
-            <div class="hero-badge">
-                🧪 منصة الكيمياء التعليمية
-            </div>
-
-            <h1>
-                الكيمياء مش حفظ...
-                <span>الكيمياء فهم 🔥</span>
-            </h1>
-
-            <p>
-                أهلاً بيك في منصة الأستاذ
-                <strong>عبدالرحمن حماده</strong>.
-                اتعلم الكيمياء بطريقة مختلفة،
-                افهم المعلومة، حل بإيدك،
-                وادخل الامتحان وأنت واثق.
-            </p>
-
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">🔥 الشعار الجديد للمستقبل</span>
+            <h1>الكيمياء مش حفظ... الكيمياء فهم 🧪</h1>
+            <p>اتعلم الكيمياء بطريقة مختلفة مع الأستاذ عبدالرحمن حماده. افهم المعلومة، حل بإيدك، وادخل الامتحان وأنت واثق.</p>
             <div class="hero-buttons">
-
-                <button class="primary-btn" onclick="goToCourses()">
-                    🚀 ابدأ المذاكرة
-                </button>
-
-                <button class="secondary-btn" onclick="openLogin()">
-                    👨‍🎓 دخول الطالب
-                </button>
-
+                <a href="#courses" class="btn-primary">🚀 ابدأ المذاكرة الان</a>
+                <button class="btn-secondary" onclick="openModal()">👨‍🎓 دخول الطالب</button>
             </div>
-
         </div>
+    </section>
 
-
-        <div class="molecule">
-
-            <div class="orbit orbit-1">
-                <span></span>
-            </div>
-
-            <div class="orbit orbit-2">
-                <span></span>
-            </div>
-
-            <div class="orbit orbit-3">
-                <span></span>
-            </div>
-
-            <div class="nucleus">
-                C
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="stats-section">
-
-    <div class="container stats">
-
-        <div class="stat-card">
-            <div class="stat-icon">📚</div>
-            <div>
-                <h3>50+</h3>
+    <!-- قسم الإحصائيات التفاعلي -->
+    <section class="stats-section" id="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                <h3 class="counter" data-target="50">0</h3>
                 <p>درس تعليمي</p>
             </div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">📝</div>
-            <div>
-                <h3>20+</h3>
-                <p>اختبار</p>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                <h3 class="counter" data-target="20">0</h3>
+                <p>اختبار دوري</p>
             </div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">🧠</div>
-            <div>
-                <h3>1000+</h3>
-                <p>سؤال</p>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="counter" data-target="1000">0</h3>
+                <p>سؤال تفاعلي</p>
             </div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">🏆</div>
-            <div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
                 <h3>24/7</h3>
-                <p>مذاكرة</p>
+                <p>مذاكرة مستمرة</p>
             </div>
         </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<section id="courses" class="section">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>📚 ابدأ رحلتك</span>
-
-            <h2>
-                الكورسات التعليمية
-            </h2>
-
-            <p>
-                اختار مستواك وابدأ تتعلم الكيمياء
-                بطريقة سهلة وممتعة.
-            </p>
-
+    <!-- قسم الكورسات التعليمية -->
+    <section class="courses-section" id="courses">
+        <div class="section-header">
+            <h2>📚 الكورسات التعليمية المتاحة</h2>
+            <p>اختار مستواك الحالي وابدأ رحلة التميز في عالم الكيمياء</p>
         </div>
-
-
         <div class="courses-grid">
-
-
-            <article class="course-card">
-
-                <div class="course-image course-one">
-
-                    <div class="course-icon">
-                        ⚛️
-                    </div>
-
-                    <span>
-                        المستوى الأول
-                    </span>
-
+            <!-- كورس 1 -->
+            <div class="course-card">
+                <div class="course-badge">المستوى الأول</div>
+                <h3>أساسيات الكيمياء</h3>
+                <p>الذرة، العناصر، الجدول الدوري الحديث، والروابط الكيميائية بالتفصيل.</p>
+                <div class="course-meta">
+                    <span><i class="fas fa-layer-group"></i> 15 درس</span>
+                    <span><i class="fas fa-hourglass-half"></i> 8 ساعات</span>
                 </div>
-
-                <div class="course-content">
-
-                    <h3>
-                        أساسيات الكيمياء
-                    </h3>
-
-                    <p>
-                        الذرة والعناصر والجدول الدوري
-                        والروابط الكيميائية.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            📖 15 درس
-                        </span>
-
-                        <span>
-                            ⏱️ 8 ساعات
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="course-btn"
-                        onclick="openCourse('أساسيات الكيمياء')">
-
-                        ابدأ الكورس ←
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="course-card">
-
-                <div class="course-image course-two">
-
-                    <div class="course-icon">
-                        🧪
-                    </div>
-
-                    <span>
-                        المستوى الثاني
-                    </span>
-
-                </div>
-
-                <div class="course-content">
-
-                    <h3>
-                        الكيمياء العضوية
-                    </h3>
-
-                    <p>
-                        المركبات العضوية والتفاعلات
-                        والمجموعات الوظيفية.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            📖 20 درس
-                        </span>
-
-                        <span>
-                            ⏱️ 12 ساعة
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="course-btn"
-                        onclick="openCourse('الكيمياء العضوية')">
-
-                        ابدأ الكورس ←
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="course-card">
-
-                <div class="course-image course-three">
-
-                    <div class="course-icon">
-                        🔥
-                    </div>
-
-                    <span>
-                        المستوى المتقدم
-                    </span>
-
-                </div>
-
-                <div class="course-content">
-
-                    <h3>
-                        حل مسائل الكيمياء
-                    </h3>
-
-                    <p>
-                        تدريب عملي على المسائل الصعبة
-                        وأسئلة الامتحانات.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            📖 25 درس
-                        </span>
-
-                        <span>
-                            ⏱️ 15 ساعة
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="course-btn"
-                        onclick="openCourse('حل مسائل الكيمياء')">
-
-                        ابدأ الكورس ←
-
-                    </button>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="features" class="section features-section">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>
-                🚀 ليه عبدالرحمن حماده؟
-            </span>
-
-            <h2>
-                كل اللي تحتاجه للمذاكرة
-            </h2>
-
-        </div>
-
-
-        <div class="features-grid">
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🎥
-                </div>
-
-                <h3>
-                    شرح مبسط
-                </h3>
-
-                <p>
-                    شرح واضح ومنظم يخليك تفهم
-                    المعلومة بدل ما تحفظها.
-                </p>
-
+                <button class="btn-course" onclick="startQuiz('basics')">ابدأ الكورس الآن <i class="fas fa-arrow-left"></i></button>
             </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📝
+            <!-- كورس 2 -->
+            <div class="course-card highlighted">
+                <div class="course-badge hot">المستوى الثاني</div>
+                <h3>الكيمياء العضوية</h3>
+                <p>تفكيك عقدة العضوية: المركبات، التفاعلات السريعة، والمجموعات الوظيفية.</p>
+                <div class="course-meta">
+                    <span><i class="fas fa-layer-group"></i> 20 درس</span>
+                    <span><i class="fas fa-hourglass-half"></i> 12 ساعة</span>
                 </div>
-
-                <h3>
-                    اختبارات
-                </h3>
-
-                <p>
-                    اختبر نفسك بعد كل درس واعرف
-                    مستواك الحقيقي.
-                </p>
-
+                <button class="btn-course" onclick="startQuiz('organic')">ابدأ الكورس الآن <i class="fas fa-arrow-left"></i></button>
             </div>
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📊
+            <!-- كورس 3 -->
+            <div class="course-card">
+                <div class="course-badge">المستوى المتقدم</div>
+                <h3>حل مسائل الكيمياء</h3>
+                <p>تدريب عملي مكثف على أفكار المسائل الصعبة وتريكات امتحانات الثانوية العامة.</p>
+                <div class="course-meta">
+                    <span><i class="fas fa-layer-group"></i> 25 درس</span>
+                    <span><i class="fas fa-hourglass-half"></i> 15 ساعة</span>
                 </div>
-
-                <h3>
-                    متابعة التقدم
-                </h3>
-
-                <p>
-                    تابع نسبة إنجازك واعرف
-                    إيه اللي خلصته وإيه اللي باقي.
-                </p>
-
+                <button class="btn-course" onclick="startQuiz('problems')">ابدأ الكورس الآن <i class="fas fa-arrow-left"></i></button>
             </div>
+        </div>
+    </section>
 
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🏆
-                </div>
-
-                <h3>
-                    إنجازات
-                </h3>
-
-                <p>
-                    اجمع النقاط والشارات وكل ما
-                    تتقدم مستواك يعلى.
-                </p>
-
+    <!-- قسم منطقة الاختبار التفاعلية (جديد وصاعق) -->
+    <section id="quiz-zone" class="quiz-zone hidden">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h3 id="quiz-title">الاختبار السريع</h3>
+                <div class="score-board">النقاط: <span id="points">0</span> ⭐</div>
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="about" class="section about-section">
-
-    <div class="container about">
-
-        <div class="about-icon">
-            🧪
-        </div>
-
-        <div>
-
-            <span class="about-label">
-                عن المنصة
-            </span>
-
-            <h2>
-                أهلاً بيك في عالم
-                الكيمياء مع عبدالرحمن حماده
-            </h2>
-
-            <p>
-                هدفنا إن الكيمياء تبقى مادة
-                مفهومة وممتعة، مش مادة للحفظ وخلاص.
-                هنا هتتعلم خطوة بخطوة،
-                وتحل، وتراجع، وتختبر نفسك.
-            </p>
-
-            <button
-                class="primary-btn"
-                onclick="openLogin()">
-
-                ابدأ رحلتك الآن 🚀
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-    <div class="container footer">
-
-        <div>
-
-            <div class="logo">
-
-                <div class="logo-icon">
-                    ⚗️
+            <div id="question-container">
+                <p class="question-text" id="question">جاري تحميل السؤال...</p>
+                <div class="options-grid" id="options">
+                    <!-- الخيارات تظهر هنا بالـ JS -->
                 </div>
-
-                <div>
-                    عبدالرحمن
-                    <span>حماده</span>
-                </div>
-
             </div>
-
-            <p>
-                منصة الكيمياء التعليمية
-            </p>
-
+            <div id="quiz-result" class="quiz-result hidden">
+                <h4>🎉 عمل ممتاز يا بطل!</h4>
+                <p>لقد اجتزت التحدي بنجاح وكسبت شارة الكيميائي المحترف!</p>
+                <button class="btn-secondary" onclick="closeQuiz()">العودة للكورسات</button>
+            </div>
         </div>
+    </section>
 
-        <div>
-            © 2026 عبدالرحمن حماده
+    <!-- نافذة تسجيل الدخول المنبثقة -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-user-astronaut"></i>
+                <h3>أهلاً بيك يا بطل في معملك 🧪</h3>
+                <p>سجل دخولك الآن عشان تتابع نقاطك وإنجازاتك</p>
+            </div>
+            <form onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>اسم البطل</label>
+                    <input type="text" id="studentName" required placeholder="اكتب اسمك الثلاثي">
+                </div>
+                <div class="input-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-submit">دخول المنصة 🚀</button>
+            </form>
         </div>
-
     </div>
 
-</footer>
+    <footer class="footer">
+        <p>© 2026 عبدالرحمن حماده | منصة الكيمياء التعليمية الفوق فضائية</p>
+    </footer>
 
-
-<div id="loginModal" class="modal">
-
-    <div class="modal-box">
-
-        <button
-            class="modal-close"
-            onclick="closeLogin()">
-
-            ×
-
-        </button>
-
-        <div class="modal-icon">
-            👨‍🎓
-        </div>
-
-        <h2>
-            أهلاً بيك يا بطل
-        </h2>
-
-        <p>
-            سجل دخولك وابدأ المذاكرة
-        </p>
-
-        <input
-            id="studentName"
-            type="text"
-            placeholder="اسم الطالب">
-
-        <input
-            id="studentEmail"
-            type="email"
-            placeholder="البريد الإلكتروني">
-
-        <button
-            class="primary-btn modal-btn"
-            onclick="loginStudent()">
-
-            دخول المنصة 🚀
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<div id="courseModal" class="modal">
-
-    <div class="modal-box course-modal">
-
-        <button
-            class="modal-close"
-            onclick="closeCourse()">
-
-            ×
-
-        </button>
-
-        <div class="modal-icon">
-            🧪
-        </div>
-
-        <h2 id="courseTitle">
-            اسم الكورس
-        </h2>
-
-        <p>
-            الكورس جاهز للمذاكرة 🔥
-        </p>
-
-        <div class="lesson-list">
-
-            <button>
-                ▶️ الدرس الأول
-            </button>
-
-            <button>
-                ▶️ الدرس الثاني
-            </button>
-
-            <button>
-                ▶️ الدرس الثالث
-            </button>
-
-            <button>
-                📝 اختبار الكورس
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
